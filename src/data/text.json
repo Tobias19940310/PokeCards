@@ -1,0 +1,10 @@
+{
+    "navBar":{
+        "header":"PokeCards",
+        "subHeader":"Gotta Display 'Em All!"
+    },
+    "card":{
+        "noCardHeader":"This is a PokeDex",
+        "noCardInfo":"Select a Pokemon to display every information you could ever need!"
+    }
+}
