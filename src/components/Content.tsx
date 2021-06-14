@@ -1,8 +1,14 @@
+import React, {useState, useEffect, createContext} from "react";
+
 import {CircularProgress, Divider, Grid, Hidden, makeStyles} from "@material-ui/core";
-import { IAllPokemon, ISinglePokemon } from '../data/InterfacesPokemon'
 
 import PokemonList from "./PokemonList";
 import PokemonCard from './PokemonCard';
+
+import {baseAllPokemon} from "../data/baseItems";
+import {baseSinglePokemon} from "../data/baseItems";
+import {IAllPokemon, ISinglePokemon} from "../data/InterfacesPokemon";
+import {getAllPokemon, getSinglePokemon} from "../api/pokeApi";
 
 const useStyles = makeStyles((theme) => ({
     container:{
@@ -25,15 +31,36 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Content( 
-    {allPokemon, retrieveAllPokemon, perPageLimit, singlePokemon, retrieveSinglePokemon}
-    :
-    {
-    allPokemon:IAllPokemon, retrieveAllPokemon:(offset:number)=>void; perPageLimit:number, 
-    singlePokemon:ISinglePokemon, retrieveSinglePokemon:(url:string)=>void;
-    }){
+const AllPokemonContext :React.Context<IAllPokemon> = createContext(baseAllPokemon);
+
+function Content(){
 
     const classes = useStyles();
+
+    const [allPokemon, setAllPokemon] = useState<IAllPokemon>(baseAllPokemon);
+    const [singlePokemon, setSinglePokemon] = useState<ISinglePokemon>(baseSinglePokemon);
+    const perPageLimit :number = 60;
+
+    useEffect(() => {
+        retrieveAllPokemon(0);
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+    //PASS OFFSET (AT WHICH ID DOES THE PAGE START)
+    const retrieveAllPokemon = (offset:number) :void => {
+        const url :string = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${perPageLimit}`
+        getAllPokemon(url)
+        .then((response :IAllPokemon) => {
+            if(response !== undefined) setAllPokemon(response);
+        })
+    }
+
+    //PASS URL OF SINGLE POKEMON
+    const retrieveSinglePokemon = (url:string) :void => {
+        getSinglePokemon(url)
+        .then((response :ISinglePokemon) => {
+            if(response !== undefined) setSinglePokemon(response);
+        })
+    }
 
     return (
         <Grid container wrap="wrap" className={classes.container}>

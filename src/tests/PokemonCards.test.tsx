@@ -1,12 +1,10 @@
-import React from "react";
 import '@testing-library/jest-dom/extend-expect'
-import {render, waitFor} from "@testing-library/react";
+import {render} from "@testing-library/react";
 
 import {bulbasaur} from "./mocks/bulbasaur";
 import {firstPokemonList} from "./mocks/firstPokemonList";
 
 import App from '../App';
-import PokemonCard from '../components/PokemonCard';
 import HeightWeight from "../components/cardCompoments/HeightWeight";
 import Types from "../components/cardCompoments/Types";
 

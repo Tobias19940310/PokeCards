@@ -50,35 +50,37 @@ function Evolutions(
     const retrieveEvolutions = (url:string) :void => {
         getEvolutions(url)
         .then((response :IEvolutions) => {
-            let tempEvolutions :Array<IAllPokemonSingle> = [];
-            //WENN EINE ENTWICKLUNG VORHANGEN
-            if(response.chain.evolves_to.length !== 0){
-                //1. ENTWICKLUNG
-                const tempEvo1 :IAllPokemonSingle = {
-                    name: response.chain.species.name,
-                    image: response.chain.species.image,
-                    url: response.chain.species.url
-                }
-                tempEvolutions.push(tempEvo1);
-                //2. ENTWICKLUNG
-                const tempEvo2 :IAllPokemonSingle = {
-                    name: response.chain.evolves_to[0].species.name,
-                    image: response.chain.evolves_to[0].species.image,
-                    url: response.chain.evolves_to[0].species.url
-                }
-                tempEvolutions.push(tempEvo2);
-                //WENN 3. ENTWICKLUNG VORHANDEN
-                if(response.chain.evolves_to[0].evolves_to.length !== 0) {
-                    //3. ENTWICKLUNG
-                    const tempEvo3 :IAllPokemonSingle = {
-                        name: response.chain.evolves_to[0].evolves_to[0].species.name,
-                        image: response.chain.evolves_to[0].evolves_to[0].species.image,
-                        url: response.chain.evolves_to[0].evolves_to[0].species.url
+            if(response !== undefined) {
+                let tempEvolutions :Array<IAllPokemonSingle> = [];
+                //WENN EINE ENTWICKLUNG VORHANGEN
+                if(response.chain.evolves_to.length !== 0){
+                    //1. ENTWICKLUNG
+                    const tempEvo1 :IAllPokemonSingle = {
+                        name: response.chain.species.name,
+                        image: response.chain.species.image,
+                        url: response.chain.species.url
                     }
-                    tempEvolutions.push(tempEvo3);
+                    tempEvolutions.push(tempEvo1);
+                    //2. ENTWICKLUNG
+                    const tempEvo2 :IAllPokemonSingle = {
+                        name: response.chain.evolves_to[0].species.name,
+                        image: response.chain.evolves_to[0].species.image,
+                        url: response.chain.evolves_to[0].species.url
+                    }
+                    tempEvolutions.push(tempEvo2);
+                    //WENN 3. ENTWICKLUNG VORHANDEN
+                    if(response.chain.evolves_to[0].evolves_to.length !== 0) {
+                        //3. ENTWICKLUNG
+                        const tempEvo3 :IAllPokemonSingle = {
+                            name: response.chain.evolves_to[0].evolves_to[0].species.name,
+                            image: response.chain.evolves_to[0].evolves_to[0].species.image,
+                            url: response.chain.evolves_to[0].evolves_to[0].species.url
+                        }
+                        tempEvolutions.push(tempEvo3);
+                    }
                 }
+                setEvolutions(tempEvolutions);    
             }
-            setEvolutions(tempEvolutions);
         })
     }
 
