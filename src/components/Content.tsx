@@ -1,14 +1,17 @@
-import React, {useState, useEffect, createContext} from "react";
+import React from "react";
 
 import {CircularProgress, Divider, Grid, Hidden, makeStyles} from "@material-ui/core";
 
 import PokemonList from "./PokemonList";
 import PokemonCard from './PokemonCard';
 
-import {baseAllPokemon} from "../data/baseItems";
+import { allPokemonState } from "../State";
+import { useState } from "@hookstate/core";
+
 import {baseSinglePokemon} from "../data/baseItems";
 import {IAllPokemon, ISinglePokemon} from "../data/InterfacesPokemon";
 import {getAllPokemon, getSinglePokemon} from "../api/pokeApi";
+
 
 const useStyles = makeStyles((theme) => ({
     container:{
@@ -26,33 +29,23 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor:"firebrick"
     },
     spinner:{
-        paddingTop:"200px",
+        alignSelf:"center",
         filter:"grayscale(100%) opacity(50%)"
     }
 }))
 
-const AllPokemonContext :React.Context<IAllPokemon> = createContext(baseAllPokemon);
-
 function Content(){
 
     const classes = useStyles();
-
-    const [allPokemon, setAllPokemon] = useState<IAllPokemon>(baseAllPokemon);
-    const [singlePokemon, setSinglePokemon] = useState<ISinglePokemon>(baseSinglePokemon);
+    const allPokemon = useState<IAllPokemon>(allPokemonState);
+    // const [allPokemon, setAllPokemon] = useState<IAllPokemon>(baseAllPokemon);
+    const [singlePokemon, setSinglePokemon] = React.useState<ISinglePokemon>(baseSinglePokemon);
     const perPageLimit :number = 60;
 
-    useEffect(() => {
-        retrieveAllPokemon(0);
+    React.useEffect(() => {
+        getAllPokemon(0, perPageLimit)
+        .then((response:IAllPokemon) => allPokemon.set(response))
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-    //PASS OFFSET (AT WHICH ID DOES THE PAGE START)
-    const retrieveAllPokemon = (offset:number) :void => {
-        const url :string = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${perPageLimit}`
-        getAllPokemon(url)
-        .then((response :IAllPokemon) => {
-            if(response !== undefined) setAllPokemon(response);
-        })
-    }
 
     //PASS URL OF SINGLE POKEMON
     const retrieveSinglePokemon = (url:string) :void => {
@@ -73,13 +66,12 @@ function Content(){
             </Hidden>
             
             <Grid item xs={12} sm={6} md={7} className={classes.center}>
-                {allPokemon.count === 0 ? 
+                {allPokemon.get().count === 0 ? 
                     <CircularProgress className={classes.spinner} data-testid="loadingPokemon" />
                 : 
                     <PokemonList 
-                        allPokemon={allPokemon} retrieveAllPokemon={retrieveAllPokemon} 
                         perPageLimit={perPageLimit}
-                        singlePokemon={singlePokemon} retrieveSinglePokemon={retrieveSinglePokemon}
+                        retrieveSinglePokemon={retrieveSinglePokemon}
                     />}
             </Grid>
         </Grid>

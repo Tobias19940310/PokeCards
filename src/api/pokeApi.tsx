@@ -2,7 +2,8 @@
 import { IEvolutions, ISpecies } from "../data/InterfacesEvolutions";
 import { IAllPokemon, ISinglePokemon } from "../data/InterfacesPokemon";
 
-export const getAllPokemon = async (url: string) :Promise<IAllPokemon> => {
+export const getAllPokemon = async (offset:number, perPageLimit:number) :Promise<IAllPokemon> => {
+    const url :string = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${perPageLimit}`
     const response :any = await fetch(url)
     .catch((error) => console.error("error " + error));
     const body :IAllPokemon = await response.json();

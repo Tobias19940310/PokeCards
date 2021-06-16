@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect} from 'react'
 import { Box, makeStyles, Paper, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
-import { IAllPokemon, IAllPokemonSingle, ISinglePokemon } from '../data/InterfacesPokemon'
+import { IAllPokemon, IAllPokemonSingle } from '../data/InterfacesPokemon'
 import { firstLetterUppercase } from "../helperFunctions/helperFunctions";
+import { allPokemonState } from '../State';
+import {createState, useState} from "@hookstate/core";
+import { getAllPokemon } from '../api/pokeApi';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,34 +45,32 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function PokemonList( 
-    {allPokemon, retrieveAllPokemon, perPageLimit, singlePokemon, retrieveSinglePokemon}
-    :
-    {allPokemon:IAllPokemon, retrieveAllPokemon:(offset:number)=>void; perPageLimit:number, 
-    singlePokemon:ISinglePokemon, retrieveSinglePokemon:(url:string)=>void;}
-    ){
+function PokemonList( { perPageLimit, retrieveSinglePokemon}:{perPageLimit:number, retrieveSinglePokemon:(url:string)=>void;}){
     
     const theme = useTheme();
     const mediumBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
+    const allPokemon = useState<IAllPokemon>(allPokemonState);
     const classes = useStyles();
-    const [paginationCount, setPaginationCount] = useState<number>(1);
+    const paginationCountState = createState<number>(1);
+    const paginationCount = useState(paginationCountState);
 
     useEffect(() => {
-        setPaginationCount(calculatePaginationCount());
+        paginationCount.set(calculatePaginationCount());
     }, [allPokemon]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const calculatePaginationCount = () :number => {
-        return Math.ceil(allPokemon.count / perPageLimit);
+        return Math.ceil(allPokemon.get().count / perPageLimit);
     }
     const handlePagination = (e:object, page:number) :void => {
         const offset = (page -1) * perPageLimit;
-        retrieveAllPokemon(offset);
+        getAllPokemon(offset, perPageLimit)
+        .then((response:IAllPokemon) => allPokemon.set(response))
     }
     const selectSinglePokemon = (event : React.MouseEvent) :void => {
         const element :HTMLElement= event.target as HTMLElement;
         for(let i = 0; i < Object.keys(allPokemon.results).length; i++){
-            if(Object.values(allPokemon.results)[i].name === element.textContent?.toLowerCase()){
-                retrieveSinglePokemon(Object.values(allPokemon.results)[i].url);
+            if(Object.values(allPokemon.get().results)[i].name === element.textContent?.toLowerCase()){
+                retrieveSinglePokemon(Object.values(allPokemon.get().results)[i].url);
                 highlightSinglePokemon(element.textContent)
             }
         }
@@ -92,15 +93,15 @@ function PokemonList(
             flexWrap="wrap"
             justifyContent="center"
             >
-            {allPokemon.results.map((pokemon :IAllPokemonSingle, i:number)=>(
+            {allPokemon.get().results.map((pokemon :IAllPokemonSingle, i:number)=>(
                 <Paper className={classes.paper} key={pokemon.name} onClick={selectSinglePokemon} data-testid="singlePokemon">
                     <Typography variant="body2" className={classes.text}>{firstLetterUppercase(pokemon.name)}</Typography>
                 </Paper>
             ))}
             </Box>
-            {paginationCount === 1 ? null :
+            {paginationCount.get() === 1 ? null :
                 <Pagination 
-                count={paginationCount} 
+                count={paginationCount.get()} 
                 className={classes.pagination} 
                 shape="rounded"
                 size={
