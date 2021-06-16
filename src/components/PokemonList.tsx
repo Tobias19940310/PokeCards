@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react'
 import { Box, makeStyles, Paper, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
-import { IAllPokemon, IAllPokemonSingle } from '../data/InterfacesPokemon'
-import { firstLetterUppercase } from "../helperFunctions/helperFunctions";
-import { allPokemonState } from '../State';
+
+import { IAllPokemon, IAllPokemonSingle, ISinglePokemon } from '../data/InterfacesPokemon'
+import { allPokemonState, perPageLimitState, singlePokemonState } from '../State';
 import {createState, useState} from "@hookstate/core";
-import { getAllPokemon } from '../api/pokeApi';
+
+import { firstLetterUppercase } from "../helperFunctions/helperFunctions";
+import { getAllPokemon, getSinglePokemon } from '../api/pokeApi';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,12 +47,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function PokemonList( { perPageLimit, retrieveSinglePokemon}:{perPageLimit:number, retrieveSinglePokemon:(url:string)=>void;}){
+function PokemonList(){
     
     const theme = useTheme();
-    const mediumBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
-    const allPokemon = useState<IAllPokemon>(allPokemonState);
     const classes = useStyles();
+    const mediumBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
+    
+    const allPokemon = useState<IAllPokemon>(allPokemonState);
+    const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
+    const perPageLimit = useState<number>(perPageLimitState)
     const paginationCountState = createState<number>(1);
     const paginationCount = useState(paginationCountState);
 
@@ -59,31 +64,32 @@ function PokemonList( { perPageLimit, retrieveSinglePokemon}:{perPageLimit:numbe
     }, [allPokemon]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const calculatePaginationCount = () :number => {
-        return Math.ceil(allPokemon.get().count / perPageLimit);
+        return Math.ceil(allPokemon.get().count / perPageLimit.get());
     }
     const handlePagination = (e:object, page:number) :void => {
-        const offset = (page -1) * perPageLimit;
-        getAllPokemon(offset, perPageLimit)
+        const offset = (page -1) * perPageLimit.get();
+        getAllPokemon(offset, perPageLimit.get())
         .then((response:IAllPokemon) => allPokemon.set(response))
     }
     const selectSinglePokemon = (event : React.MouseEvent) :void => {
         const element :HTMLElement= event.target as HTMLElement;
         for(let i = 0; i < Object.keys(allPokemon.results).length; i++){
             if(Object.values(allPokemon.get().results)[i].name === element.textContent?.toLowerCase()){
-                retrieveSinglePokemon(Object.values(allPokemon.get().results)[i].url);
-                highlightSinglePokemon(element.textContent)
+                getSinglePokemon(Object.values(allPokemon.get().results)[i].url)
+                .then((response:ISinglePokemon) => singlePokemon.set(response))
+                // highlightSinglePokemon(element.textContent)
             }
         }
     }
-    const highlightSinglePokemon = (name:string) :void => {
-        const container :HTMLElement | null = document.getElementById("pokemonList");
-        const pList :Array<HTMLElement> | null = container ? Array.from(container.querySelectorAll("p")) : null;
-        pList?.forEach(element => {
-            const parent :HTMLElement = element.parentNode as HTMLElement;
-            parent.style.backgroundColor = element.textContent === name ? "firebrick" : "";
-            parent.style.color = element.textContent === name ? "white" : "";
-        });
-    }
+    // const highlightSinglePokemon = (name:string) :void => {
+    //     const container :HTMLElement | null = document.getElementById("pokemonList");
+    //     const pList :Array<HTMLElement> | null = container ? Array.from(container.querySelectorAll("p")) : null;
+    //     pList?.forEach(element => {
+    //         const parent :HTMLElement = element.parentNode as HTMLElement;
+    //         parent.style.backgroundColor = element.textContent === name ? "firebrick" : "";
+    //         parent.style.color = element.textContent === name ? "white" : "";
+    //     });
+    // }
 
     return (
         <Box id="pokemonList" data-testid="pokemonList">

@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Chip, makeStyles, Typography } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import { IAllPokemonSingle } from "../../data/InterfacesPokemon";
+import { IAllPokemonSingle, ISinglePokemon } from "../../data/InterfacesPokemon";
 import { IEvolutions } from "../../data/InterfacesEvolutions";
 
-import { getEvolutions } from "../../api/pokeApi";
+import { getEvolutions, getSinglePokemon } from "../../api/pokeApi";
 import { firstLetterUppercase } from "../../helperFunctions/helperFunctions";
+import { useState } from "@hookstate/core";
+import { accordionExpandedState, singlePokemonState } from "../../State";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,16 +32,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Evolutions( 
-    { evolutionUrl, retrieveSinglePokemon, expanded, handleChangeAccordion } 
-    :
-    { evolutionUrl:string, retrieveSinglePokemon:(url:string)=>void; 
-    expanded:string | boolean, handleChangeAccordion:(panel:string) => (event:React.ChangeEvent<{}>, newExpanded:boolean) => void}
-    ) {
+function Evolutions() {
 
     const classes = useStyles();
+    const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
+    const evolutionUrl = singlePokemon.get().species.url;
+    const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
-    const [evolutions, setEvolutions] = useState<Array<IAllPokemonSingle>>([]);
+    const [evolutions, setEvolutions] = React.useState<Array<IAllPokemonSingle>>([]);
 
     useEffect(() => {
         if(evolutionUrl !== ""){
@@ -87,11 +87,12 @@ function Evolutions(
     const selectPokemonFromEvolution = (event : React.MouseEvent) :void => {
         const element :HTMLElement = event.target as HTMLElement;
         const url = "https://pokeapi.co/api/v2/pokemon/"+element.innerText.toLowerCase();
-        retrieveSinglePokemon(url);
+        getSinglePokemon(url)
+            .then((response:ISinglePokemon) => singlePokemon.set(response))
     }
 
     return (
-        <Accordion  expanded={expanded === "panel1"} onChange={handleChangeAccordion("panel1")} className={classes.firstAccordion}>
+        <Accordion  expanded={accordionExpanded.get() === "panel1"} onChange={()=>accordionExpanded.set("panel1")} className={classes.firstAccordion}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography align="center" variant="subtitle1">Evolutions:</Typography>
             </AccordionSummary>

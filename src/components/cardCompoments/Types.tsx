@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { Box, Chip, makeStyles } from "@material-ui/core";
-import { IType } from "../../data/InterfacesPokemon";
+
+import { useState } from "@hookstate/core";
+import { IType, ISinglePokemon } from "../../data/InterfacesPokemon";
+import { singlePokemonState } from "../../State";
 
 import typeColors from "../../data/typeColors.json"
 
@@ -16,9 +19,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Types( { types} : { types:Array<IType> }) {
+function Types() {
 
     const classes = useStyles();
+    const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
+    const types :Array<IType> = singlePokemon.get().types;
 
     const setColorTypes = () :void => {
         const typeChips :Array<HTMLElement> = Object.values(document.querySelectorAll(".type"));

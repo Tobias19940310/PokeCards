@@ -1,16 +1,14 @@
-import React from "react";
-
+import {useEffect} from "react";
 import {CircularProgress, Divider, Grid, Hidden, makeStyles} from "@material-ui/core";
 
 import PokemonList from "./PokemonList";
 import PokemonCard from './PokemonCard';
 
-import { allPokemonState } from "../State";
+import { allPokemonState, perPageLimitState } from "../State";
 import { useState } from "@hookstate/core";
 
-import {baseSinglePokemon} from "../data/baseItems";
-import {IAllPokemon, ISinglePokemon} from "../data/InterfacesPokemon";
-import {getAllPokemon, getSinglePokemon} from "../api/pokeApi";
+import {IAllPokemon} from "../data/InterfacesPokemon";
+import {getAllPokemon} from "../api/pokeApi";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,27 +36,18 @@ function Content(){
 
     const classes = useStyles();
     const allPokemon = useState<IAllPokemon>(allPokemonState);
-    // const [allPokemon, setAllPokemon] = useState<IAllPokemon>(baseAllPokemon);
-    const [singlePokemon, setSinglePokemon] = React.useState<ISinglePokemon>(baseSinglePokemon);
-    const perPageLimit :number = 60;
+    const perPageLimit = useState<number>(perPageLimitState)
 
-    React.useEffect(() => {
-        getAllPokemon(0, perPageLimit)
+    useEffect(() => {
+        getAllPokemon(0, perPageLimit.get())
         .then((response:IAllPokemon) => allPokemon.set(response))
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-    //PASS URL OF SINGLE POKEMON
-    const retrieveSinglePokemon = (url:string) :void => {
-        getSinglePokemon(url)
-        .then((response :ISinglePokemon) => {
-            if(response !== undefined) setSinglePokemon(response);
-        })
-    }
 
     return (
         <Grid container wrap="wrap" className={classes.container}>
             <Grid item xs={12} sm={5} md={4} className={classes.center}>
-                <PokemonCard singlePokemon={singlePokemon} retrieveSinglePokemon={retrieveSinglePokemon}/>
+                <PokemonCard />
             </Grid>
 
             <Hidden xsDown>
@@ -69,10 +58,7 @@ function Content(){
                 {allPokemon.get().count === 0 ? 
                     <CircularProgress className={classes.spinner} data-testid="loadingPokemon" />
                 : 
-                    <PokemonList 
-                        perPageLimit={perPageLimit}
-                        retrieveSinglePokemon={retrieveSinglePokemon}
-                    />}
+                    <PokemonList />}
             </Grid>
         </Grid>
     )

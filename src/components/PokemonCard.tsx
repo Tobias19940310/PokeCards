@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import React from 'react'
 import { Card, CardContent, CardMedia, Divider, makeStyles, Typography} from "@material-ui/core";
 
 import { ISinglePokemon } from '../data/InterfacesPokemon';
+
+import { useState } from '@hookstate/core';
+import { singlePokemonState } from '../State';
 
 import HeightWeight from "./cardCompoments/HeightWeight";
 import Types from "./cardCompoments/Types";
@@ -52,23 +55,16 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function PokemonCard(
-    {singlePokemon, retrieveSinglePokemon} : 
-    {singlePokemon :ISinglePokemon, retrieveSinglePokemon:(url:string)=>void;}
-    ){
+function PokemonCard(){
 
     const classes = useStyles();
     const text = fullText.card;
+    const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
 
-    const [expanded, setExpanded] = useState<string | boolean>(false);
-
-    const handleChangeAccordion = (panel:string) => (event:React.ChangeEvent<{}>, newExpanded:boolean) :void => {
-        setExpanded(newExpanded ? panel : false);
-    }
 
     return (
         <Card className={classes.grow}>
-            {singlePokemon.name === "" ? 
+            {singlePokemon.get().name === "" ? 
             //POKEDEX DEFAULT
             <CardContent data-testid="defaultCard">
                 <CardMedia 
@@ -86,23 +82,20 @@ function PokemonCard(
             <CardContent test-id="pokemonCard">
                 <CardMedia 
                     component ="img"
-                    alt={"Pokemon Image " + singlePokemon.name}
-                    image={singlePokemon.sprites.front_default}
-                    title={"Pokemon Image " + singlePokemon.name}
+                    alt={"Pokemon Image " + singlePokemon.get().name}
+                    image={singlePokemon.get().sprites.front_default}
+                    title={"Pokemon Image " + singlePokemon.get().name}
                     className={classes.media} />
 
                 <Divider className={classes.divider} />
 
-                <Typography variant="h5" align="center" gutterBottom>{`#${singlePokemon.id} - ${firstLetterUppercase(singlePokemon.name)}`}</Typography>
-                <HeightWeight height={singlePokemon.height} weight={singlePokemon.weight} />
-                <Types types={singlePokemon.types} />
-                <Evolutions 
-                    evolutionUrl={singlePokemon.species.url} retrieveSinglePokemon={retrieveSinglePokemon}
-                    expanded={expanded} handleChangeAccordion={handleChangeAccordion}
-                    />
-                <Stats stats={singlePokemon.stats} expanded={expanded} handleChangeAccordion={handleChangeAccordion} />
-                <Abilities abilities={singlePokemon.abilities} expanded={expanded} handleChangeAccordion={handleChangeAccordion} />
-                <Moves moves={singlePokemon.moves} expanded={expanded} handleChangeAccordion={handleChangeAccordion} />
+                <Typography variant="h5" align="center" gutterBottom>{`#${singlePokemon.get().id} - ${firstLetterUppercase(singlePokemon.get().name)}`}</Typography>
+                <HeightWeight />
+                <Types />
+                <Evolutions />
+                <Stats />
+                <Abilities />
+                <Moves />
             </CardContent>
             }
         </Card>

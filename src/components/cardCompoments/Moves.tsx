@@ -1,7 +1,9 @@
 import { Accordion, AccordionSummary, AccordionDetails, Box, Chip, makeStyles, Typography} from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { IMove } from '../../data/InterfacesPokemon';
+import { useState } from "@hookstate/core";
+import { IMove, ISinglePokemon } from "../../data/InterfacesPokemon";
+import { accordionExpandedState, singlePokemonState } from "../../State";
 
 import {firstLetterUppercase} from "../../helperFunctions/helperFunctions";
 
@@ -22,16 +24,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Moves( 
-    { moves, expanded, handleChangeAccordion  } 
-    : 
-    { moves:Array<IMove>, expanded:string | boolean, handleChangeAccordion:(panel:string) => (event:React.ChangeEvent<{}>, newExpanded:boolean) => void }
-    ){
+function Moves(){
 
     const classes = useStyles();
+    const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
+    const moves :Array<IMove> = singlePokemon.get().moves;
+    const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
     return (
-        <Accordion expanded={expanded === "panel4"} onChange={handleChangeAccordion("panel4")}>
+        <Accordion expanded={accordionExpanded.get() === "panel4"} onChange={()=>accordionExpanded.set("panel4")}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography align="center" variant="subtitle1">Moves:</Typography>
             </AccordionSummary>

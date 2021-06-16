@@ -1,7 +1,10 @@
 import { Accordion, AccordionSummary, AccordionDetails, Box, Chip, makeStyles, Typography} from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { IAbility } from "../../data/InterfacesPokemon";
+import { useState } from "@hookstate/core";
+import { IAbility, ISinglePokemon } from "../../data/InterfacesPokemon";
+import { accordionExpandedState, singlePokemonState } from "../../State";
+
 import { firstLetterUppercase } from "../../helperFunctions/helperFunctions";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,16 +21,15 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-function Abilities( 
-    { abilities, expanded, handleChangeAccordion } 
-    : 
-    {abilities:Array<IAbility>, expanded:string | boolean, handleChangeAccordion:(panel:string) => (event:React.ChangeEvent<{}>, newExpanded:boolean) => void}
-    ){
+function Abilities(){
 
     const classes = useStyles();
+    const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
+    const abilities :Array<IAbility> = singlePokemon.get().abilities;
+    const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
     return (
-        <Accordion expanded={expanded === "panel3"} onChange={handleChangeAccordion("panel3")}>
+        <Accordion expanded={accordionExpanded.get() === "panel3"} onChange={()=>accordionExpanded.set("panel3")}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography align="center" variant="subtitle1">Abilities:</Typography>
             </AccordionSummary>
