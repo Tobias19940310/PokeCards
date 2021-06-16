@@ -7,7 +7,7 @@ export interface IAllPokemonSingle {
 export interface IAllPokemon {
     count:number,
     next: string,
-    previous: string,
+    previous: string | null,
     results: Array<IAllPokemonSingle>
 }
 

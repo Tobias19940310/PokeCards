@@ -61,7 +61,7 @@ function PokemonList(){
 
     useEffect(() => {
         paginationCount.set(calculatePaginationCount());
-    }, [allPokemon]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const calculatePaginationCount = () :number => {
         return Math.ceil(allPokemon.get().count / perPageLimit.get());
