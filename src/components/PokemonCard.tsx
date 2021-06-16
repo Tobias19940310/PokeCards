@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, CardContent, CardMedia, Divider, makeStyles, Typography} from "@material-ui/core";
 
 import { ISinglePokemon } from '../data/InterfacesPokemon';

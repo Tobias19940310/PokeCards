@@ -8,7 +8,7 @@ import { IEvolutions } from "../../data/InterfacesEvolutions";
 import { getEvolutions, getSinglePokemon } from "../../api/pokeApi";
 import { firstLetterUppercase } from "../../helperFunctions/helperFunctions";
 import { useState } from "@hookstate/core";
-import { accordionExpandedState, singlePokemonState } from "../../State";
+import { accordionExpandedState, evolutionsState, singlePokemonState } from "../../State";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,16 +36,17 @@ function Evolutions() {
 
     const classes = useStyles();
     const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
+    const evolutions = useState<Array<IAllPokemonSingle>>(evolutionsState)
     const evolutionUrl = singlePokemon.get().species.url;
     const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
-    const [evolutions, setEvolutions] = React.useState<Array<IAllPokemonSingle>>([]);
+    // const [evolutions, setEvolutions] = React.useState<Array<IAllPokemonSingle>>([]);
 
     useEffect(() => {
         if(evolutionUrl !== ""){
             retrieveEvolutions(evolutionUrl);
         }
-    }, [evolutionUrl])
+    }, [evolutionUrl]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const retrieveEvolutions = (url:string) :void => {
         getEvolutions(url)
@@ -79,7 +80,7 @@ function Evolutions() {
                         tempEvolutions.push(tempEvo3);
                     }
                 }
-                setEvolutions(tempEvolutions);    
+                evolutions.set(tempEvolutions);    
             }
         })
     }
@@ -100,7 +101,7 @@ function Evolutions() {
                 <Box display="flex" flexDirection="column" flexWrap="wrap" alignItems="center" className={classes.full}>
                     {evolutions.length === 0 ?
                     <Typography align="center" variant="body1">-- No Evolutions --</Typography> :
-                        evolutions.map((element:IAllPokemonSingle)=>(
+                        evolutions.get().map((element:IAllPokemonSingle)=>(
                             <Chip key={element.name} label={firstLetterUppercase(element.name)} className={classes.chipColor}
                             avatar={<Avatar alt={"Image " + element.name} src={element.image} />}
                             clickable onClick={selectPokemonFromEvolution}
