@@ -56,7 +56,7 @@ function Content(){
             
             <Grid item xs={12} sm={6} md={7} className={classes.center}>
                 {allPokemon.get().count === 0 ? 
-                    <CircularProgress className={classes.spinner} data-testid="loadingPokemon" />
+                    <CircularProgress className={classes.spinner} id="loadingPokemon" ata-testid="loadingPokemon" />
                 : 
                     <PokemonList />}
             </Grid>

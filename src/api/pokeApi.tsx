@@ -1,5 +1,5 @@
 
-import { IEvolutions, ISpecies } from "../data/InterfacesEvolutions";
+import { IEvolutions, ISpeciesBody } from "../data/InterfacesEvolutions";
 import { IAllPokemon, ISinglePokemon } from "../data/InterfacesPokemon";
 
 export const getAllPokemon = async (offset:number, perPageLimit:number) :Promise<IAllPokemon> => {
@@ -24,7 +24,7 @@ export const getEvolutions = async (url: string) :Promise<IEvolutions> => {
     //GET SPECIES FOR EVOLUTION CHANGE
     const responseSpecies :any = await fetch(url)
     .catch((error) => console.error("error " + error));
-    const bodySpecies :ISpecies = await responseSpecies.json();
+    const bodySpecies :ISpeciesBody = await responseSpecies.json();
 
     //GET EVOLUTIONCHAIN
     const urlEvolution :string = bodySpecies.evolution_chain.url;

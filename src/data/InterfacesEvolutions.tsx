@@ -1,4 +1,4 @@
-export interface ISpecies {
+export interface ISpeciesBody {
     evolution_chain: IUrl;
 }
 

@@ -12,6 +12,6 @@ export const getSinglePokemon = (url:string) :Promise<ISinglePokemon> => {
     return new Promise((resolve) => resolve(bulbasaur))
 }
 
-export const getEvolutions = (url: string) :Promise<any> => {
+export const getEvolutions = (url: string) :Promise<IEvolutions> => {
     return new Promise((resolve) => resolve(bulbasaurEvolutions))
 }

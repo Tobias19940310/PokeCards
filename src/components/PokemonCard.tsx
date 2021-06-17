@@ -65,7 +65,7 @@ function PokemonCard(){
         <Card className={classes.grow}>
             {singlePokemon.get().name === "" ? 
             //POKEDEX DEFAULT
-            <CardContent data-testid="defaultCard">
+            <CardContent id="defaultCard" data-testid="defaultCard">
                 <CardMedia 
                     component ="img"
                     alt="Pokedex"
@@ -78,7 +78,7 @@ function PokemonCard(){
             </CardContent>
             :
             // POKEMONCARD
-            <CardContent test-id="pokemonCard">
+            <CardContent id="pokemonCard" test-id="pokemonCard">
                 <CardMedia 
                     component ="img"
                     alt={"Pokemon Image " + singlePokemon.get().name}
