@@ -32,7 +32,7 @@ function Moves(){
     const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
     return (
-        <Accordion expanded={accordionExpanded.get() === "panel4"} onChange={()=>accordionExpanded.set("panel4")}>
+        <Accordion expanded={accordionExpanded.get() === "panel4"} onChange={()=>accordionExpanded.set(accordionExpanded.get()==="panel4"?false:"panel4")}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography align="center" variant="subtitle1">Moves:</Typography>
             </AccordionSummary>

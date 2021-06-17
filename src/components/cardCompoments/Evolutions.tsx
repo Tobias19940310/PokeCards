@@ -93,7 +93,7 @@ function Evolutions() {
     }
 
     return (
-        <Accordion  expanded={accordionExpanded.get() === "panel1"} onChange={()=>accordionExpanded.set("panel1")} className={classes.firstAccordion}>
+        <Accordion  expanded={accordionExpanded.get() === "panel1"} onChange={()=>accordionExpanded.set(accordionExpanded.get()==="panel1"?false:"panel1")} className={classes.firstAccordion}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography align="center" variant="subtitle1">Evolutions:</Typography>
             </AccordionSummary>

@@ -29,7 +29,7 @@ function Abilities(){
     const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
     return (
-        <Accordion expanded={accordionExpanded.get() === "panel3"} onChange={()=>accordionExpanded.set("panel3")}>
+        <Accordion expanded={accordionExpanded.get() === "panel3"} onChange={()=>accordionExpanded.set(accordionExpanded.get()==="panel3"?false:"panel3")}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography align="center" variant="subtitle1">Abilities:</Typography>
             </AccordionSummary>

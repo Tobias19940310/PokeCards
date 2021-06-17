@@ -24,7 +24,7 @@ function Stats(){
     const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
     return (
-        <Accordion expanded={accordionExpanded.get() === "panel2"} onChange={()=>accordionExpanded.set("panel2")}>
+        <Accordion expanded={accordionExpanded.get() === "panel2"} onChange={()=>accordionExpanded.set(accordionExpanded.get()==="panel2"?false:"panel2")}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography align="center" variant="subtitle1">Stats:</Typography>
             </AccordionSummary>
