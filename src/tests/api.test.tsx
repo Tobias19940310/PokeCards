@@ -26,5 +26,5 @@ test("getEvolutionsWithImages", async () => {
     .then((data:IEvolutions)=>{
         expect(data).toStrictEqual(bulbasaurEvolutions)
     }) 
-})
+}) 
 
