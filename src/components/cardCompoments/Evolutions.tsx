@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Chip, makeS
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import { IAllPokemonSingle, ISinglePokemon } from "../../data/InterfacesPokemon";
-import { IEvolutions } from "../../data/InterfacesEvolutions";
+import { evolvesTo, IChain, IEvolutions } from "../../data/InterfacesEvolutions";
 
 import { getEvolutions, getSinglePokemon } from "../../api/pokeApi";
 import { firstLetterUppercase } from "../../helperFunctions/helperFunctions";
@@ -40,8 +40,6 @@ function Evolutions() {
     const evolutionUrl = singlePokemon.get().species.url;
     const accordionExpanded = useState<string | boolean>(accordionExpandedState)
 
-    // const [evolutions, setEvolutions] = React.useState<Array<IAllPokemonSingle>>([]);
-
     useEffect(() => {
         if(evolutionUrl !== ""){
             retrieveEvolutions(evolutionUrl);
@@ -62,22 +60,29 @@ function Evolutions() {
                         url: response.chain.species.url
                     }
                     tempEvolutions.push(tempEvo1);
+                    
                     //2. ENTWICKLUNG
-                    const tempEvo2 :IAllPokemonSingle = {
-                        name: response.chain.evolves_to[0].species.name,
-                        image: response.chain.evolves_to[0].species.image,
-                        url: response.chain.evolves_to[0].species.url
+                    if(response.chain.evolves_to.length >= 1){
+                        response.chain.evolves_to.forEach((evolution :IChain, i:number)=> {
+                            const tempEvo2 :IAllPokemonSingle = {
+                                name: response.chain.evolves_to[i].species.name,
+                                image: response.chain.evolves_to[i].species.image,
+                                url: response.chain.evolves_to[i].species.url
+                            }
+                            tempEvolutions.push(tempEvo2);
+                        });
                     }
-                    tempEvolutions.push(tempEvo2);
-                    //WENN 3. ENTWICKLUNG VORHANDEN
-                    if(response.chain.evolves_to[0].evolves_to.length !== 0) {
-                        //3. ENTWICKLUNG
-                        const tempEvo3 :IAllPokemonSingle = {
-                            name: response.chain.evolves_to[0].evolves_to[0].species.name,
-                            image: response.chain.evolves_to[0].evolves_to[0].species.image,
-                            url: response.chain.evolves_to[0].evolves_to[0].species.url
-                        }
-                        tempEvolutions.push(tempEvo3);
+
+                    //WENN 3.. ENTWICKLUNG VORHANDEN
+                    if(response.chain.evolves_to[0].evolves_to.length >= 1){
+                        response.chain.evolves_to[0].evolves_to.forEach((evolution :IChain, i:number)=> {
+                            const tempEvo2 :IAllPokemonSingle = {
+                                name: response.chain.evolves_to[0].evolves_to[i].species.name,
+                                image: response.chain.evolves_to[0].evolves_to[i].species.image,
+                                url: response.chain.evolves_to[0].evolves_to[i].species.url
+                            }
+                            tempEvolutions.push(tempEvo2);
+                        });
                     }
                 }
                 evolutions.set(tempEvolutions);    
