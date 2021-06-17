@@ -1,18 +1,30 @@
 import { getAllPokemon, getSinglePokemon, getEvolutions } from "../api/pokeApi";
+import { IEvolutions } from "../data/InterfacesEvolutions";
+import { IAllPokemon, ISinglePokemon } from "../data/InterfacesPokemon";
 import { bulbasaur } from "./__mocks__/bulbasaur";
 import { bulbasaurEvolutions } from "./__mocks__/bulbasaurEvolutions";
 import { firstPokemonList } from "./__mocks__/firstPokemonList";
 
 //HAT SICH DIE API RESPONSE VERÄNDERT?
 
-test("getAllPokemon", () => {
-    expect(getAllPokemon(0, 60)).toBe(firstPokemonList)
+test("getAllPokemon", async () => {
+    return getAllPokemon(0,60)
+    .then((data:IAllPokemon)=>{
+        expect(data).toStrictEqual(firstPokemonList)
+    }) 
 })
 
-test("getSinglePokemon", () => {
-    expect(getSinglePokemon("https://pokeapi.co/api/v2/pokemon/1")).toBe(bulbasaur)
+test("getSinglePokemon", async () => {
+    return getSinglePokemon("https://pokeapi.co/api/v2/pokemon/1")
+    .then((data:ISinglePokemon)=>{
+        expect(data).toStrictEqual(bulbasaur)
+    }) 
 })
 
-test("getEvolutions", () => {
-    expect(getEvolutions("https://pokeapi.co/api/v2/pokemon/1")).toBe(bulbasaurEvolutions)
+test("getEvolutionsWithImages", async () => {
+    return getEvolutions("https://pokeapi.co/api/v2/pokemon-species/1/")
+    .then((data:IEvolutions)=>{
+        expect(data).toStrictEqual(bulbasaurEvolutions)
+    }) 
 })
+

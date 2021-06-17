@@ -24,6 +24,7 @@ test("render DefaultCard at first, render first Pokemon List & card", async () =
     expect(loadingPokemon).toBeTruthy();
 
 
+
     //TEST FAILED AB HIER...
     // const bulbasaur :HTMLElement | null = getByText("Bulbasaur");
     // expect(defaultCard).toBeFalsy();

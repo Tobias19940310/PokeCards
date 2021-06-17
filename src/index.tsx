@@ -5,7 +5,7 @@ import App from './App';
 // KNOWN BUGS
 // - Zu schnelles Klicken auf die Evolutions Chips kann zu unvollständigen API-Requests führen
 // - Probleme, bei (sehr) wenigen Entwicklungs-API-Calls - dürfte mit Namen der Species zusammenhängen
-// - Evoli (oder mehrere Pokemon) haben komplexe Evolutionsketten, die noch nicht vollständig dargestellt werden
+// - FINDDOMNODE Warning
 
 // ADDITIONAL FEATURES
 // -Suchfunktion mit Name oder ID

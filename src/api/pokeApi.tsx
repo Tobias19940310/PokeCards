@@ -1,5 +1,5 @@
 
-import { evolvesTo, IChain, IEvolutions, ISpecies } from "../data/InterfacesEvolutions";
+import { IEvolutions, ISpecies } from "../data/InterfacesEvolutions";
 import { IAllPokemon, ISinglePokemon } from "../data/InterfacesPokemon";
 
 export const getAllPokemon = async (offset:number, perPageLimit:number) :Promise<IAllPokemon> => {

@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Chip, makeS
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import { IAllPokemonSingle, ISinglePokemon } from "../../data/InterfacesPokemon";
-import { evolvesTo, IChain, IEvolutions } from "../../data/InterfacesEvolutions";
+import { IChain, IEvolutions } from "../../data/InterfacesEvolutions";
 
 import { getEvolutions, getSinglePokemon } from "../../api/pokeApi";
 import { firstLetterUppercase } from "../../helperFunctions/helperFunctions";
