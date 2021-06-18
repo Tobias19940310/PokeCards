@@ -3,7 +3,7 @@ import { Box, makeStyles, Paper, Typography, useMediaQuery, useTheme } from "@ma
 import { Pagination } from "@material-ui/lab";
 
 import { IAllPokemon, IAllPokemonSingle, ISinglePokemon } from '../data/InterfacesPokemon'
-import { allPokemonState, perPageLimitState, singlePokemonState } from '../State';
+import { accordionExpandedState, allPokemonState, perPageLimitState, singlePokemonState } from '../State';
 import {createState, useState} from "@hookstate/core";
 
 import { firstLetterUppercase } from "../helperFunctions/helperFunctions";
@@ -56,6 +56,7 @@ function PokemonList(){
     const allPokemon = useState<IAllPokemon>(allPokemonState);
     const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
     const perPageLimit = useState<number>(perPageLimitState)
+    const accordionExpanded = useState<string | boolean>(accordionExpandedState);
     const paginationCountState = createState<number>(1);
     const paginationCount = useState(paginationCountState);
 
@@ -76,6 +77,8 @@ function PokemonList(){
         .then((response:IAllPokemon) => allPokemon.set(response))
     }
     const selectSinglePokemon = (event : React.MouseEvent) :void => {
+        accordionExpanded.set(false);
+        window.scrollTo({top:0, behavior:"smooth"});
         const element :HTMLElement= event.target as HTMLElement;
         for(let i = 0; i < Object.keys(allPokemon.results).length; i++){
             if(Object.values(allPokemon.get().results)[i].name === element.textContent?.toLowerCase()){

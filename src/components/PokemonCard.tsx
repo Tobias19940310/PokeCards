@@ -1,9 +1,10 @@
+import {useEffect} from "react";
 import { Card, CardContent, CardMedia, Divider, makeStyles, Typography} from "@material-ui/core";
 
 import { ISinglePokemon } from '../data/InterfacesPokemon';
 
 import { useState } from '@hookstate/core';
-import { singlePokemonState } from '../State';
+import { accordionExpandedState, singlePokemonState } from '../State';
 
 import HeightWeight from "./cardCompoments/HeightWeight";
 import Types from "./cardCompoments/Types";
@@ -59,7 +60,6 @@ function PokemonCard(){
     const classes = useStyles();
     const text = fullText.card;
     const singlePokemon = useState<ISinglePokemon>(singlePokemonState);
-
 
     return (
         <Card className={classes.grow}>
