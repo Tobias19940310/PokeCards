@@ -1,10 +1,13 @@
 import '@testing-library/jest-dom/extend-expect'
-import {render, waitFor,} from "@testing-library/react";
 import ReactDOM from 'react-dom';
-import TestUtils, { act } from 'react-dom/test-utils';
+import { act } from 'react-dom/test-utils';
+
+import renderer from 'react-test-renderer';
+import TestRenderer  from 'react-test-renderer';
+
 
 import Content from '../components/Content';
-import { bulbasaur } from './__mocks__/bulbasaur';
+import PokemonCard from '../components/PokemonCard';
 
 let container :HTMLElement | null;
 
@@ -19,7 +22,7 @@ afterEach(() => {
 });
 
 
-test("render DefaultCard at first, render first Pokemon List", async () => {
+test("render DefaultCard at first, render first Pokemon List, click on first Pokemon to change PokemonCard", async () => {
 
     jest.mock("../api/pokeApi")
 
@@ -31,22 +34,43 @@ test("render DefaultCard at first, render first Pokemon List", async () => {
         ReactDOM.render(<Content />, container);
     })
 
-    const defaultCard :HTMLElement | null = container!.querySelector("#defaultCard");
-    const pokemonCard :HTMLElement | null = container!.querySelector("#pokemonCard");
+    let defaultCard :HTMLElement | null = container!.querySelector("#defaultCard");
+    let pokemonCard :HTMLElement | null = container!.querySelector("#pokemonCard");
     const loadingPokemon :HTMLElement | null = container!.querySelector("#loadingPokemon");
 
     expect(defaultCard).toBeTruthy();
     expect(pokemonCard).toBeFalsy();
     expect(loadingPokemon).toBeTruthy();
 
+    //WARTEN AUF ERHALT DER POKEMONLISTE
     await act(async () => {
         await sleep(500); 
     });
-    const bulbasaur :HTMLDivElement | undefined = Array.from(document.querySelectorAll("div")).find((el:HTMLElement) => el.textContent === "Bulbasaur");
-    expect(defaultCard).toBeTruthy();
+    let bulbasaur :HTMLDivElement | undefined = Array.from(document.querySelectorAll("div")).find((el:HTMLElement) => el.textContent === "Bulbasaur");
     expect(bulbasaur).toBeInTheDocument();
     expect(loadingPokemon).not.toBeInTheDocument();
+
+    //KLICK AUF BULBASAUR UND ÄNDERN DER POKEMONKARTEN
+    bulbasaur?.dispatchEvent(new MouseEvent("click", {bubbles:true}))
+    await act(async () => {
+        await sleep(500); 
+    });
+    defaultCard = container!.querySelector("#defaultCard");
+    pokemonCard = container!.querySelector("#pokemonCard");
+    expect(pokemonCard).toBeTruthy();
+    expect(defaultCard).toBeFalsy();
+    let pokemonName :string | null | undefined = pokemonCard!.querySelector("h5")?.textContent;
+    expect(pokemonName).toBe("#1 - Bulbasaur");
 });
 
+
+test("pokemonCardBulbasaur Snapshot", async () => {
+
+    const tree = renderer
+    .create(<PokemonCard />)
+    .toJSON();
+    expect(tree).toMatchSnapshot();
+    
+})
 
 

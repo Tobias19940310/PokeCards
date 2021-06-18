@@ -63,6 +63,10 @@ function PokemonList(){
         paginationCount.set(calculatePaginationCount());
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+    useEffect(() => {
+        if(singlePokemon.get().id!==0) highlightSinglePokemon(singlePokemon.get().name);
+    }, [singlePokemon])
+
     const calculatePaginationCount = () :number => {
         return Math.ceil(allPokemon.get().count / perPageLimit.get());
     }
@@ -77,19 +81,18 @@ function PokemonList(){
             if(Object.values(allPokemon.get().results)[i].name === element.textContent?.toLowerCase()){
                 getSinglePokemon(Object.values(allPokemon.get().results)[i].url)
                 .then((response:ISinglePokemon) => singlePokemon.set(response))
-                // highlightSinglePokemon(element.textContent)
             }
         }
     }
-    // const highlightSinglePokemon = (name:string) :void => {
-    //     const container :HTMLElement | null = document.getElementById("pokemonList");
-    //     const pList :Array<HTMLElement> | null = container ? Array.from(container.querySelectorAll("p")) : null;
-    //     pList?.forEach(element => {
-    //         const parent :HTMLElement = element.parentNode as HTMLElement;
-    //         parent.style.backgroundColor = element.textContent === name ? "firebrick" : "";
-    //         parent.style.color = element.textContent === name ? "white" : "";
-    //     });
-    // }
+    const highlightSinglePokemon = (name:string) :void => {
+        const container :HTMLElement | null = document.getElementById("pokemonList");
+        const pList :Array<HTMLElement> | null = container ? Array.from(container.querySelectorAll("p")) : null;
+        pList?.forEach(element => {
+            const parent :HTMLElement = element.parentNode as HTMLElement;
+            parent.style.backgroundColor = element.textContent === firstLetterUppercase(name) ? "firebrick" : "";
+            parent.style.color = element.textContent === firstLetterUppercase(name) ? "white" : "";
+        });
+    }
 
     return (
         <Box id="pokemonList" data-testid="pokemonList">

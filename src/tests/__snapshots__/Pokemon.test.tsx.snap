@@ -1,0 +1,1453 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pokemonCardBulbasaur Snapshot 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-grow-5 MuiPaper-elevation1 MuiPaper-rounded"
+>
+  <div
+    className="MuiCardContent-root"
+    id="pokemonCard"
+    test-id="pokemonCard"
+  >
+    <img
+      alt="Pokemon Image bulbasaur"
+      className="MuiCardMedia-root makeStyles-media-7 MuiCardMedia-media MuiCardMedia-img"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+      title="Pokemon Image bulbasaur"
+    />
+    <hr
+      className="MuiDivider-root makeStyles-divider-9"
+    />
+    <h5
+      className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
+    >
+      #1 - Bulbasaur
+    </h5>
+    <div
+      className="MuiBox-root MuiBox-root-32"
+    >
+      <div
+        className="MuiChip-root makeStyles-chipOutline-15 MuiChip-sizeSmall"
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+      >
+        <span
+          className="MuiChip-label MuiChip-labelSmall"
+        >
+          Height: 0.70m
+        </span>
+      </div>
+      <div
+        className="MuiChip-root makeStyles-chipOutline-15 MuiChip-sizeSmall"
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+      >
+        <span
+          className="MuiChip-label MuiChip-labelSmall"
+        >
+          Weight: 6.90kg
+        </span>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root MuiBox-root-33"
+    >
+      <div
+        className="MuiChip-root makeStyles-chipColor-17 type"
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+      >
+        <span
+          className="MuiChip-label"
+        >
+          Grass
+        </span>
+      </div>
+      <div
+        className="MuiChip-root makeStyles-chipColor-17 type"
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+      >
+        <span
+          className="MuiChip-label"
+        >
+          Poison
+        </span>
+      </div>
+    </div>
+    <div
+      className="MuiPaper-root MuiAccordion-root makeStyles-firstAccordion-21 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-disabled={false}
+        aria-expanded={false}
+        className="MuiButtonBase-root MuiAccordionSummary-root"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <div
+          className="MuiAccordionSummary-content"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-alignCenter"
+          >
+            Evolutions:
+          </h6>
+        </div>
+        <div
+          aria-disabled={false}
+          aria-hidden={true}
+          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role={null}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div
+        className="MuiCollapse-container MuiCollapse-hidden"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper"
+        >
+          <div
+            className="MuiCollapse-wrapperInner"
+          >
+            <div
+              role="region"
+            >
+              <div
+                className="MuiAccordionDetails-root makeStyles-accordionDetails-22"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-34 makeStyles-full-19"
+                >
+                  <p
+                    className="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+                  >
+                    -- No Evolutions --
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-disabled={false}
+        aria-expanded={false}
+        className="MuiButtonBase-root MuiAccordionSummary-root"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <div
+          className="MuiAccordionSummary-content"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-alignCenter"
+          >
+            Stats:
+          </h6>
+        </div>
+        <div
+          aria-disabled={false}
+          aria-hidden={true}
+          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role={null}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div
+        className="MuiCollapse-container MuiCollapse-hidden"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper"
+        >
+          <div
+            className="MuiCollapse-wrapperInner"
+          >
+            <div
+              role="region"
+            >
+              <div
+                className="MuiAccordionDetails-root makeStyles-accordionDetails-24"
+              >
+                <table
+                  className="MuiTable-root"
+                  role={null}
+                >
+                  <tbody
+                    className="MuiTableBody-root"
+                    role={null}
+                  >
+                    <tr
+                      className="MuiTableRow-root"
+                      role={null}
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+                      >
+                        Hp
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall"
+                      >
+                        45
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                      role={null}
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+                      >
+                        Attack
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall"
+                      >
+                        49
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                      role={null}
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+                      >
+                        Defense
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall"
+                      >
+                        49
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                      role={null}
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+                      >
+                        Special-Attack
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall"
+                      >
+                        65
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                      role={null}
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+                      >
+                        Special-Defense
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall"
+                      >
+                        65
+                      </td>
+                    </tr>
+                    <tr
+                      className="MuiTableRow-root"
+                      role={null}
+                    >
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+                      >
+                        Speed
+                      </td>
+                      <td
+                        aria-sort={null}
+                        className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall"
+                      >
+                        45
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-disabled={false}
+        aria-expanded={false}
+        className="MuiButtonBase-root MuiAccordionSummary-root"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <div
+          className="MuiAccordionSummary-content"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-alignCenter"
+          >
+            Abilities:
+          </h6>
+        </div>
+        <div
+          aria-disabled={false}
+          aria-hidden={true}
+          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role={null}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div
+        className="MuiCollapse-container MuiCollapse-hidden"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper"
+        >
+          <div
+            className="MuiCollapse-wrapperInner"
+          >
+            <div
+              role="region"
+            >
+              <div
+                className="MuiAccordionDetails-root makeStyles-accordionDetails-26"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-35"
+                >
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-25 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Overgrow
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-25 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Chlorophyll
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-disabled={false}
+        aria-expanded={false}
+        className="MuiButtonBase-root MuiAccordionSummary-root"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <div
+          className="MuiAccordionSummary-content"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-alignCenter"
+          >
+            Moves:
+          </h6>
+        </div>
+        <div
+          aria-disabled={false}
+          aria-hidden={true}
+          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role={null}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div
+        className="MuiCollapse-container MuiCollapse-hidden"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper"
+        >
+          <div
+            className="MuiCollapse-wrapperInner"
+          >
+            <div
+              role="region"
+            >
+              <div
+                className="MuiAccordionDetails-root makeStyles-accordionDetails-29"
+              >
+                <div
+                  className="MuiBox-root MuiBox-root-36 makeStyles-scrollBox-30"
+                >
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Razor-Wind
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Swords-Dance
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Cut
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Bind
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Vine-Whip
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Headbutt
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Tackle
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Body-Slam
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Take-Down
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Double-Edge
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Growl
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Strength
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Mega-Drain
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Leech-Seed
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Growth
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Razor-Leaf
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Solar-Beam
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Poison-Powder
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Sleep-Powder
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Petal-Dance
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      String-Shot
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Toxic
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Rage
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Mimic
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Double-Team
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Defense-Curl
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Light-Screen
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Reflect
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Bide
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Sludge
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Skull-Bash
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Amnesia
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Flash
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Rest
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Substitute
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Snore
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Curse
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Protect
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Sludge-Bomb
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Mud-Slap
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Giga-Drain
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Endure
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Charm
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Swagger
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Fury-Cutter
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Attract
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Sleep-Talk
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Return
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Frustration
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Safeguard
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Sweet-Scent
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Synthesis
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Hidden-Power
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Sunny-Day
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Rock-Smash
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Facade
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Nature-Power
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Ingrain
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Knock-Off
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Secret-Power
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Grass-Whistle
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Bullet-Seed
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Magical-Leaf
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Natural-Gift
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Worry-Seed
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Seed-Bomb
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Energy-Ball
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Leaf-Storm
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Power-Whip
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Captivate
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Grass-Knot
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Venoshock
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Round
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Echoed-Voice
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Grass-Pledge
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Work-Up
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Grassy-Terrain
+                    </span>
+                  </div>
+                  <div
+                    className="MuiChip-root makeStyles-chipOutlineSmall-28 MuiChip-sizeSmall"
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                  >
+                    <span
+                      className="MuiChip-label MuiChip-labelSmall"
+                    >
+                      Confide
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
