@@ -1,10 +1,12 @@
 import {useEffect} from "react";
 import {CircularProgress, Divider, Grid, Hidden, makeStyles} from "@material-ui/core";
 
+import fullText from "../data/text.json";
+
 import PokemonList from "./PokemonList";
 import PokemonCard from './PokemonCard';
 
-import { allPokemonState, perPageLimitState } from "../State";
+import { alertTextState, allPokemonState, dialogOpenState, perPageLimitState } from "../State";
 import { useState } from "@hookstate/core";
 
 import {IAllPokemon} from "../data/InterfacesPokemon";
@@ -37,10 +39,15 @@ function Content(){
     const classes = useStyles();
     const allPokemon = useState<IAllPokemon>(allPokemonState);
     const perPageLimit = useState<number>(perPageLimitState)
+    const dialogOpen = useState<boolean>(dialogOpenState);
+    const alertText = useState<string>(alertTextState);
 
     useEffect(() => {
         getAllPokemon(0, perPageLimit.get())
-        .then((response:IAllPokemon) => allPokemon.set(response))
+        .then((response:IAllPokemon | undefined) => {
+            if(response!== undefined) allPokemon.set(response);
+            else { alertText.set(fullText.alert.err); dialogOpen.set(true);  }
+        })
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

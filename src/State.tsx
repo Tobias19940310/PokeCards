@@ -9,3 +9,6 @@ export const evolutionsState = createState<Array<IAllPokemonSingle>>([])
 
 export const perPageLimitState = createState<number>(60);
 export const accordionExpandedState = createState<string | boolean>(false);
+
+export const dialogOpenState = createState<boolean>(false);
+export const alertTextState = createState<string>("");

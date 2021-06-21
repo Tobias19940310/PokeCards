@@ -2,8 +2,10 @@ import React, {useEffect} from 'react'
 import { Box, makeStyles, Paper, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 
+import fullText from "../data/text.json";
+
 import { IAllPokemon, IAllPokemonSingle, ISinglePokemon } from '../data/InterfacesPokemon'
-import { accordionExpandedState, allPokemonState, perPageLimitState, singlePokemonState } from '../State';
+import { accordionExpandedState, alertTextState, allPokemonState, dialogOpenState, perPageLimitState, singlePokemonState } from '../State';
 import {createState, useState} from "@hookstate/core";
 
 import { firstLetterUppercase } from "../helperFunctions/helperFunctions";
@@ -59,6 +61,8 @@ function PokemonList(){
     const accordionExpanded = useState<string | boolean>(accordionExpandedState);
     const paginationCountState = createState<number>(1);
     const paginationCount = useState(paginationCountState);
+    const dialogOpen = useState<boolean>(dialogOpenState);
+    const alertText = useState<string>(alertTextState);
 
     useEffect(() => {
         paginationCount.set(calculatePaginationCount());
@@ -74,7 +78,10 @@ function PokemonList(){
     const handlePagination = (e:object, page:number) :void => {
         const offset = (page -1) * perPageLimit.get();
         getAllPokemon(offset, perPageLimit.get())
-        .then((response:IAllPokemon) => allPokemon.set(response))
+        .then((response:IAllPokemon | undefined) => {
+            if(response!== undefined) allPokemon.set(response);
+            else { alertText.set(fullText.alert.err); dialogOpen.set(true);  }
+        })
     }
     const selectSinglePokemon = (event : React.MouseEvent) :void => {
         accordionExpanded.set(false);
@@ -83,7 +90,10 @@ function PokemonList(){
         for(let i = 0; i < Object.keys(allPokemon.results).length; i++){
             if(Object.values(allPokemon.get().results)[i].name === element.textContent?.toLowerCase()){
                 getSinglePokemon(Object.values(allPokemon.get().results)[i].url)
-                .then((response:ISinglePokemon) => singlePokemon.set(response))
+                .then((response:ISinglePokemon | undefined) => {
+                    if(response!== undefined) singlePokemon.set(response);
+                    else { alertText.set(fullText.alert.err); dialogOpen.set(true);  }
+                })
             }
         }
     }

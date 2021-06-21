@@ -6,5 +6,9 @@
     "card":{
         "noCardHeader":"This is a PokeDex",
         "noCardInfo":"Select a Pokemon to display every information you could ever need!"
+    },
+    "alert":{
+        "h":"Error...",
+        "err":"Invalid Response from API. Try again later."
     }
 }

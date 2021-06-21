@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Chip, makeStyles, Typography } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
+import fullText from "../../data/text.json";
+
 import { IAllPokemonSingle, ISinglePokemon } from "../../data/InterfacesPokemon";
 import { IChain, IEvolutions } from "../../data/InterfacesEvolutions";
 
 import { getEvolutions, getSinglePokemon } from "../../api/pokeApi";
 import { firstLetterUppercase } from "../../helperFunctions/helperFunctions";
 import { useState } from "@hookstate/core";
-import { accordionExpandedState, evolutionsState, singlePokemonState } from "../../State";
+import { accordionExpandedState, alertTextState, dialogOpenState, evolutionsState, singlePokemonState } from "../../State";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +41,8 @@ function Evolutions() {
     const evolutions = useState<Array<IAllPokemonSingle>>(evolutionsState)
     const evolutionUrl = singlePokemon.get().species.url;
     const accordionExpanded = useState<string | boolean>(accordionExpandedState)
+    const dialogOpen = useState<boolean>(dialogOpenState);
+    const alertText = useState<string>(alertTextState);
 
     useEffect(() => {
         if(evolutionUrl !== ""){
@@ -48,7 +52,7 @@ function Evolutions() {
 
     const retrieveEvolutions = (url:string) :void => {
         getEvolutions(url)
-        .then((response :IEvolutions) => {
+        .then((response :IEvolutions | undefined) => {
             if(response !== undefined) {
                 let tempEvolutions :Array<IAllPokemonSingle> = [];
                 //WENN EINE ENTWICKLUNG VORHANGEN
@@ -86,7 +90,7 @@ function Evolutions() {
                     }
                 }
                 evolutions.set(tempEvolutions);    
-            }
+            } else { alertText.set(fullText.alert.err); dialogOpen.set(true); }
         })
     }
 
@@ -94,7 +98,10 @@ function Evolutions() {
         const element :HTMLElement = event.target as HTMLElement;
         const url = "https://pokeapi.co/api/v2/pokemon/"+element.innerText.toLowerCase();
         getSinglePokemon(url)
-            .then((response:ISinglePokemon) => singlePokemon.set(response))
+            .then((response:ISinglePokemon | undefined) => {
+                if(response!== undefined) singlePokemon.set(response);
+                else { alertText.set(fullText.alert.err); dialogOpen.set(true); }
+            })
     }
 
     return (
