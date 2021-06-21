@@ -9,21 +9,21 @@ import { firstPokemonList } from "./__mocks__/firstPokemonList";
 
 test("getAllPokemon", async () => {
     return getAllPokemon(0,60)
-    .then((data:IAllPokemon)=>{
+    .then((data:IAllPokemon | undefined)=>{
         expect(data).toStrictEqual(firstPokemonList)
     }) 
 })
 
 test("getSinglePokemon", async () => {
     return getSinglePokemon("https://pokeapi.co/api/v2/pokemon/1")
-    .then((data:ISinglePokemon)=>{
+    .then((data:ISinglePokemon | undefined)=>{
         expect(data).toStrictEqual(bulbasaur)
     }) 
 })
 
 test("getEvolutionsWithImages", async () => {
     return getEvolutions("https://pokeapi.co/api/v2/pokemon-species/1/")
-    .then((data:IEvolutions)=>{
+    .then((data:IEvolutions | undefined)=>{
         expect(data).toStrictEqual(bulbasaurEvolutions)
     }) 
 }) 

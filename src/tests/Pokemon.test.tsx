@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
 import renderer from 'react-test-renderer';
-import TestRenderer  from 'react-test-renderer';
-
 
 import Content from '../components/Content';
 import PokemonCard from '../components/PokemonCard';
@@ -25,6 +23,7 @@ afterEach(() => {
 test("render DefaultCard at first, render first Pokemon List, click on first Pokemon to change PokemonCard", async () => {
 
     jest.mock("../api/pokeApi")
+    window.scrollTo = jest.fn();
 
     function sleep(period:number) {
         return new Promise(resolve => setTimeout(resolve, period));

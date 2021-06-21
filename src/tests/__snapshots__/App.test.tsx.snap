@@ -13,7 +13,7 @@ exports[`default Render Snapshot 1`] = `
       className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        className="MuiBox-root MuiBox-root-14 makeStyles-header-2"
+        className="MuiBox-root MuiBox-root-15 makeStyles-header-2"
       >
         <h5
           className="MuiTypography-root MuiTypography-h5"

@@ -76,6 +76,7 @@ function PokemonList(){
         return Math.ceil(allPokemon.get().count / perPageLimit.get());
     }
     const handlePagination = (e:object, page:number) :void => {
+        //Offset = ab welcher Ordnungszahl startet die Pokemonliste
         const offset = (page -1) * perPageLimit.get();
         getAllPokemon(offset, perPageLimit.get())
         .then((response:IAllPokemon | undefined) => {
@@ -87,6 +88,7 @@ function PokemonList(){
         accordionExpanded.set(false);
         window.scrollTo({top:0, behavior:"smooth"});
         const element :HTMLElement= event.target as HTMLElement;
+        //Iterate durch Pokemon, wenn geklickter Name erreicht wird, wird einzelnes Pokemon ausgewählt und api call gemacht
         for(let i = 0; i < Object.keys(allPokemon.results).length; i++){
             if(Object.values(allPokemon.get().results)[i].name === element.textContent?.toLowerCase()){
                 getSinglePokemon(Object.values(allPokemon.get().results)[i].url)
@@ -99,7 +101,9 @@ function PokemonList(){
     }
     const highlightSinglePokemon = (name:string) :void => {
         const container :HTMLElement | null = document.getElementById("pokemonList");
+        //Alle p Elemente in PokemonList
         const pList :Array<HTMLElement> | null = container ? Array.from(container.querySelectorAll("p")) : null;
+        //Wenn Name stimmt, Farbe anpassen
         pList?.forEach(element => {
             const parent :HTMLElement = element.parentNode as HTMLElement;
             parent.style.backgroundColor = element.textContent === firstLetterUppercase(name) ? "firebrick" : "";

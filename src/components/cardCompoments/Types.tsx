@@ -26,11 +26,14 @@ function Types() {
     const types :Array<IType> = singlePokemon.get().types;
 
     const setColorTypes = () :void => {
+        //Get All Elements with classname "type"
         const typeChips :Array<HTMLElement> = Object.values(document.querySelectorAll(".type"));
         typeChips.forEach((element :HTMLElement) => {
+            //Wenn kein Type bekannt ist -> unknown
             const type :string = element.textContent !== undefined ? element.textContent!.toLowerCase() : "unknown";
             for (let i = 0; i < Object.keys(typeColors).length; i++){
                 if(Object.keys(typeColors)[i] === type){
+                    //Zuweisen von Farben laut Liste
                     element.style.backgroundColor = Object.values(typeColors)[i];
                     element.style.color = "white";
                 }

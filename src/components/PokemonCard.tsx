@@ -1,10 +1,9 @@
-import {useEffect} from "react";
 import { Card, CardContent, CardMedia, Divider, makeStyles, Typography} from "@material-ui/core";
 
 import { ISinglePokemon } from '../data/InterfacesPokemon';
 
 import { useState } from '@hookstate/core';
-import { accordionExpandedState, singlePokemonState } from '../State';
+import { singlePokemonState } from '../State';
 
 import HeightWeight from "./cardCompoments/HeightWeight";
 import Types from "./cardCompoments/Types";
@@ -88,7 +87,10 @@ function PokemonCard(){
 
                 <Divider className={classes.divider} />
 
-                <Typography variant="h5" align="center" gutterBottom>{`#${singlePokemon.get().id} - ${firstLetterUppercase(singlePokemon.get().name)}`}</Typography>
+                <Typography variant="h5" align="center" gutterBottom>
+                    {/* Pokemon Nummer & Name */}
+                    {`#${singlePokemon.get().id} - ${firstLetterUppercase(singlePokemon.get().name)}`}
+                </Typography>
                 <HeightWeight />
                 <Types />
                 <Evolutions />
