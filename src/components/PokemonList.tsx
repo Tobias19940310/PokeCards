@@ -46,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent:"center",
         padding: theme.spacing(2,0),
         margin: theme.spacing(0,0)
+    },
+    selected:{
+        color:"white",
+        backgroundColor: "firebrick",
     }
 }))
 
@@ -68,10 +72,6 @@ function PokemonList(){
         paginationCount.set(calculatePaginationCount());
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-    useEffect(() => {
-        if(singlePokemon.get().id!==0) highlightSinglePokemon(singlePokemon.get().name);
-    }, [singlePokemon])
-
     const calculatePaginationCount = () :number => {
         return Math.ceil(allPokemon.get().count / perPageLimit.get());
     }
@@ -84,59 +84,46 @@ function PokemonList(){
             else { alertText.set(fullText.alert.err); dialogOpen.set(true);  }
         })
     }
-    const selectSinglePokemon = (event : React.MouseEvent) :void => {
+    const selectSinglePokemon = (event : React.MouseEvent, pokemon : IAllPokemonSingle) :void => {
         accordionExpanded.set(false);
         window.scrollTo({top:0, behavior:"smooth"});
-        const element :HTMLElement= event.target as HTMLElement;
-        //Iterate durch Pokemon, wenn geklickter Name erreicht wird, wird einzelnes Pokemon ausgewählt und api call gemacht
-        for(let i = 0; i < Object.keys(allPokemon.results).length; i++){
-            if(Object.values(allPokemon.get().results)[i].name === element.textContent?.toLowerCase()){
-                getSinglePokemon(Object.values(allPokemon.get().results)[i].url)
-                .then((response:ISinglePokemon | undefined) => {
-                    if(response!== undefined) singlePokemon.set(response);
-                    else { alertText.set(fullText.alert.err); dialogOpen.set(true);  }
-                })
-            }
-        }
-    }
-    const highlightSinglePokemon = (name:string) :void => {
-        const container :HTMLElement | null = document.getElementById("pokemonList");
-        //Alle p Elemente in PokemonList
-        const pList :Array<HTMLElement> | null = container ? Array.from(container.querySelectorAll("p")) : null;
-        //Wenn Name stimmt, Farbe anpassen
-        pList?.forEach(element => {
-            const parent :HTMLElement = element.parentNode as HTMLElement;
-            parent.style.backgroundColor = element.textContent === firstLetterUppercase(name) ? "firebrick" : "";
-            parent.style.color = element.textContent === firstLetterUppercase(name) ? "white" : "";
-        });
+
+        getSinglePokemon(pokemon.url)
+        .then((response:ISinglePokemon | undefined) => {
+            if(response!== undefined) singlePokemon.set(response);
+            else { alertText.set(fullText.alert.err); dialogOpen.set(true);  }
+        })
     }
 
     return (
         <Box id="pokemonList" data-testid="pokemonList">
             <Box 
-            display="flex" 
-            flexDirection="row"
-            flexWrap="wrap"
-            justifyContent="center"
+                display="flex" 
+                flexDirection="row"
+                flexWrap="wrap"
+                justifyContent="center"
             >
             {allPokemon.get().results.map((pokemon :IAllPokemonSingle, i:number)=>(
-                <Paper className={classes.paper} key={pokemon.name} onClick={selectSinglePokemon} data-testid="singlePokemon">
+                <Paper 
+                    className={`${classes.paper} ${singlePokemon.get().name === pokemon.name ? classes.selected : ""}`} 
+                    key={pokemon.name} onClick={(e) => selectSinglePokemon(e, pokemon)} 
+                    data-testid="singlePokemon">
                     <Typography variant="body2" className={classes.text}>{firstLetterUppercase(pokemon.name)}</Typography>
                 </Paper>
             ))}
             </Box>
             {paginationCount.get() === 1 ? null :
                 <Pagination 
-                count={paginationCount.get()} 
-                className={classes.pagination} 
-                shape="rounded"
-                size={
-                    mediumBreakpoint ? 
-                    "medium" : "small"
-                } 
-                siblingCount={2}
-                boundaryCount={1}
-                onChange={(e, page) => handlePagination(e, page)}/>
+                    count={paginationCount.get()} 
+                    className={classes.pagination} 
+                    shape="rounded"
+                    size={
+                        mediumBreakpoint ? 
+                        "medium" : "small"
+                    } 
+                    siblingCount={2}
+                    boundaryCount={1}
+                    onChange={(e, page) => handlePagination(e, page)}/>
             }
         </Box>
         
